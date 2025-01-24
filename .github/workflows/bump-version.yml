@@ -1,0 +1,41 @@
+name: Manual Version Bump and PR
+
+on:
+  workflow_dispatch:
+    inputs:
+      version:
+        description: 'version (example: 1.2.3)'
+        required: true
+        type: string
+
+jobs:
+  bump-version:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+      pull-requests: write
+
+    steps:
+      - name: Tests
+        uses: ./.github/workflows/tests.yml@main
+
+      - name: Checkout code
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Install bumpp
+        run: npm install -g bumpp
+
+      - name: Create release branch
+        run: git checkout -b release
+
+      - name: Bump version
+        run: bumpp ${{github.event.inputs.version}} -y -r --commit --push --tag
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
