@@ -16,13 +16,13 @@ jobs:
       pull-requests: write
 
     steps:
-      - name: Tests
-        uses: ./.github/workflows/tests.yml@main
-
       - name: Checkout code
         uses: actions/checkout@v4
         with:
           fetch-depth: 0
+
+      - name: Tests
+        uses: ./.github/workflows/tests.yml@main
 
       - name: Setup Node.js
         uses: actions/setup-node@v4
