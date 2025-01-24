@@ -45,7 +45,7 @@ jobs:
           git config --global user.name "github-actions[bot]"
 
       - name: Bump version
-        run: bumpp ${{github.event.inputs.version}} -y -r
+        run: bumpp ${{github.event.inputs.version}} -y -r --no-push
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
@@ -58,6 +58,10 @@ jobs:
 #          NODE_AUTH_TOKEN: ${{secrets.NPM_CI_TOKEN}}
 #          NPM_CONFIG_PROVENANCE: true
 
+      - name: push changes
+        run: git push --follow-tags origin release
+
       - run: pnpx changelogithub
         env:
           GITHUB_TOKEN: ${{secrets.GITHUB_TOKEN}}
+
