@@ -20,7 +20,7 @@ jobs:
         uses: actions/checkout@v4
 
       - name: Tests
-        uses: "Volshebnik09/yantrix-fork/.github/workflows/tests.yml@main"
+        uses: ./.github/workflows/tests.yml@main
 
       - name: Setup Node.js
         uses: actions/setup-node@v4
