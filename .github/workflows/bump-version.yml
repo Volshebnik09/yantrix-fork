@@ -75,3 +75,4 @@ jobs:
           token: ${{secrets.GITHUB_TOKEN}}
           title: 'Release ${{github.event.inputs.version}}'
           delete-branch: 'true'
+          base: "main"
