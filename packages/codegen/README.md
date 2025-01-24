@@ -75,6 +75,6 @@ import { MovementAutomata } from './MovementAutomata';
 For more info, please refer to the [documentation](https://tfcp68.github.io/yantrix/integrations/150_JSAPI.html).
 
 ## [🌱 Contributing](https://tfcp68.github.io/yantrix/contributing/)
-## 📜 License
+## 📜 License.
 
 Made with 💜. Published under [MIT License](./LICENSE).
