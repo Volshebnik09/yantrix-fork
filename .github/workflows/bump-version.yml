@@ -21,6 +21,10 @@ jobs:
         with:
           fetch-depth: 0
 
+#      print dir
+      - name: List files
+        run: find .
+
       - name: Tests
         uses: ./.github/workflows/tests.yml@main
 
