@@ -67,3 +67,9 @@ jobs:
         env:
           GITHUB_TOKEN: ${{secrets.GITHUB_TOKEN}}
 
+      - name: Create PR into main
+        uses: peter-evans/create-pull-request@v5
+        with:
+          token: ${{secrets.GITHUB_TOKEN}}
+          title: 'Release ${{github.event.inputs.version}}'
+
