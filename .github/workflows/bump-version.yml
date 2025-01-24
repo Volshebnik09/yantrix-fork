@@ -12,7 +12,7 @@ jobs:
   tests:
     uses: ./.github/workflows/tests.yml
 
-  bump-version:
+  release:
     needs: tests
     runs-on: ubuntu-latest
     permissions:
@@ -23,18 +23,34 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v4
 
-#      - name: Setup Node.js
-#        uses: actions/setup-node@v4
-#        with:
-#          node-version: '20'
-#
-#      - name: Install bumpp
-#        run: npm install -g bumpp
-#
-#      - name: Create release branch
-#        run: git checkout -b release
-#
-#      - name: Bump version
-#        run: bumpp ${{github.event.inputs.version}} -y -r --commit --push --tag
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Install bumpp
+        run: npm install -g bumpp
+
+      - name: Install dependencies
+        run: pnpm install
+
+      - name: Create release branch
+        run: git checkout -b release
+
+      - name: Bump version
+        run: bumpp ${{github.event.inputs.version}} -y -r --commit --push --tag
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Build packages, examples and comparisons
+        run: pnpm build
+
+#      - name: Publish to NPM
+#        run: pnpm -r publish --access public --no-git-checks
 #        env:
-#          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+#          NODE_AUTH_TOKEN: ${{secrets.NPM_CI_TOKEN}}
+#          NPM_CONFIG_PROVENANCE: true
+
+      - run: pnpx changelogithub
+        env:
+          GITHUB_TOKEN: ${{secrets.GITHUB_TOKEN}}
