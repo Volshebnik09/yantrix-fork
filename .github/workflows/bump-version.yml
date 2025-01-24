@@ -37,9 +37,9 @@ jobs:
 
       - name: Install dependencies
         run: pnpm install
-#
-#      - name: Create release branch
-#        run: git checkout -b release
+
+      - name: Create release branch
+        run: git checkout -b release
 
       - name: Commit changes
         run: |
@@ -61,7 +61,7 @@ jobs:
 #          NPM_CONFIG_PROVENANCE: true
 
       - name: push changes
-        run: git push --follow-tags
+        run: git push --follow-tags origin release --force
 
       - run: pnpx changelogithub
         env:
