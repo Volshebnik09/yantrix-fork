@@ -1,7 +1,7 @@
 {
 	"name": "@yantrix/scripts",
 	"type": "commonjs",
-	"version": "12.0.0",
+	"version": "101.101.102",
 	"private": true,
 	"description": "Utility scripts for Yantrix",
 	"contributors": [
