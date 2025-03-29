@@ -370,7 +370,7 @@ note right of [*]
 end note
 ```
 
-Now, it's only about dispatching proper `Payloads` to the `FSM`.
+Now, it's only about dispatching proper `Payloads` to the `FSM`
 
 ## What's next?
 
