@@ -2,7 +2,7 @@
 	"$schema": "https://json.schemastore.org/package.json",
 	"name": "@yantrix/cli",
 	"type": "module",
-	"version": "101.101.102",
+	"version": "155.555.555",
 	"description": "Yantrix framework command line tools",
 	"contributors": [
 		"Alexander Uskov <https://github.com/octaharon>",

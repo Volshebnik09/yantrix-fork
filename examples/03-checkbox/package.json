@@ -1,7 +1,7 @@
 {
 	"name": "03-checkbox-react",
 	"type": "module",
-	"version": "101.101.102",
+	"version": "155.555.555",
 	"private": true,
 	"scripts": {
 		"dev": "vite",
